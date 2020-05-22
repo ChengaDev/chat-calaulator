@@ -12,7 +12,7 @@ export const startChat = () => {
         // get username from local storage if exists
         const previousUsername = localStorage.getItem(LocalStorageUserKey);
         if (previousUsername) {
-            // set username in store
+            // update username in store
             dispatch(setUsername(previousUsername));
             // handle returning user
             dispatch(handleReturningUser(previousUsername))
@@ -86,15 +86,19 @@ export const handshake = (message) => {
 
 export const calculation = (message) => {
     return function (dispatch, getState) {
+        // perform calculation on the expression from input
         const result = calculate(message.text);
 
+        // publish the user message with the math expression
         dispatch(pushMessage(message));
 
         // show bot typing indication
         dispatch(botTypingStarted());
+        // push the calculation result
         dispatch(pushMessage({ text: result, user: BotName }));
 
         setTimeout(() => {
+            // ask for another mathematical expression
             dispatch(pushMessage({ text: texts.recalculationRequest, user: BotName }));
             // remove bot typing indication
             dispatch(botTypingStopped());
