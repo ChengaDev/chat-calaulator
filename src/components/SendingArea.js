@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useCallback, useState } from 'react';
 import styled from 'styled-components';
 import submitIcon from '../images/submit_icon.png';
 import { FadeInAnimation, BlinkReverese } from './Animations';
@@ -6,14 +6,24 @@ import { EnterKeyCode } from '../constants';
 
 function SendingArea({ onSubmit, canUserType }) {
     const inputRef = useRef();
+    const [hasInputError, setHasInputError] = useState(false);
 
     const onSubmitClicked = useCallback(() => {
+        const submittedValue = inputRef.current.value;
+        // empty input validation
+        if (!submittedValue || submittedValue.length === 0) {
+            // mark the input with red outline
+            return setHasInputError(true);
+        }
         onSubmit(inputRef.current.value);
         clearInput();
     }, [onSubmit]);
 
     useEffect(() => {
+        // enable submission on enter click
         const handleEnterKeyPress = (event) => {
+            // clear red outline of exists
+            setHasInputError(false);
             const { keyCode } = event;
             if (keyCode === EnterKeyCode) {
                 onSubmitClicked();
@@ -23,6 +33,7 @@ function SendingArea({ onSubmit, canUserType }) {
         inputRef.current.addEventListener('keypress', handleEnterKeyPress);
         inputRef.current.focus();
 
+        // cleanup
         return () => {
             // eslint-disable-next-line react-hooks/exhaustive-deps
             inputRef.current.removeEventListener('keypress', handleEnterKeyPress);
@@ -38,7 +49,7 @@ function SendingArea({ onSubmit, canUserType }) {
     return (
         <Container>
             <InputWrapper>
-                <MessageInput disabled={!canUserType} ref={inputRef} />
+                <MessageInput hasError={hasInputError} disabled={!canUserType} ref={inputRef} />
             </InputWrapper>
             <SubmitButton onClick={onSubmitClicked}>
                 <SubmitIcon src={submitIcon} />
@@ -70,7 +81,7 @@ const MessageInput = styled.input`
     display: inline-block;
     height: 35px;
     border-radius: 5px;
-    border: 1px solid #bab9b6;
+    border: ${props => props.hasError ? '2px solid #d95293' : '1px solid #bab9b6'};
     text-indent: 10px;
     font-size: 20px;
     outline: none;
