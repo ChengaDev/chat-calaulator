@@ -66,4 +66,4 @@ const DotsBackground = styled.div`
     left: 50px;
 `;
 
-export default TypingBotIndication;
+export default React.memo(TypingBotIndication);

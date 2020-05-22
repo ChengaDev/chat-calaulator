@@ -106,4 +106,4 @@ const SubmitButton = styled.div`
     padding-right: 20px;
 `;
 
-export default SendingArea;
+export default Recat.memo(SendingArea);
