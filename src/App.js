@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ChatScreen from './components/ChatScreen';
+import { Provider } from 'react-redux';
+import configureStore from './configureStore';
+import styled from 'styled-components';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Provider store={configureStore()}>
+            <Container>
+                <ChatScreen></ChatScreen>
+            </Container>
+        </Provider>
+    );
 }
+
+const Container = styled.div`
+    padding-top: 5%;
+    display: flex;
+    width: 100%;
+`;
 
 export default App;
