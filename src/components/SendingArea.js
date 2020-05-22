@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import submitIcon from '../images/submit_icon.png';
 import { FadeInAnimation, BlinkReverese } from './Animations';
+import { EnterKeyCode } from '../constants';
 
 function SendingArea({ onSubmit, canUserType }) {
     const inputRef = useRef();
@@ -14,7 +15,7 @@ function SendingArea({ onSubmit, canUserType }) {
     useEffect(() => {
         const handleEnterKeyPress = (event) => {
             const { keyCode } = event;
-            if (keyCode === 13) {
+            if (keyCode === EnterKeyCode) {
                 onSubmitClicked();
             }
         };

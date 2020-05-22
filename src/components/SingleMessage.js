@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FadeInAnimation, BlinkReverese } from './Animations';
+import { SelfUsername } from '../constants';
 
 function SingleMessage({ text, user, location }) {
     const renderSelfMessage = () => {
@@ -19,7 +20,7 @@ function SingleMessage({ text, user, location }) {
         );
     };
 
-    if (user === 'Me') {
+    if (user === SelfUsername) {
         return renderSelfMessage();
     }
     return rednerBotMessage();

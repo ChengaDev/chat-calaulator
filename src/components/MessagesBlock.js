@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SingleMessage from './SingleMessage';
 import { Rotate } from './Animations';
+import { SelfUsername } from '../constants';
 
 function MessagesBlock({ messages, user, avatar }) {
     const isSingleMessage = messages.length === 1;
@@ -35,7 +36,7 @@ const Avatar = styled.img`
     position: absolute;
     bottom: 5px;
 
-    ${(props) => props.user === 'Me' && `right: 0;`}
+    ${(props) => props.user === SelfUsername && `right: 0;`}
 `;
 
 export default MessagesBlock;

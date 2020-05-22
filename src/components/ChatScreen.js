@@ -8,6 +8,7 @@ import { isBotTypingSelector, canUserTypeSelector } from '../state/chat/selector
 import { messagesBlocksSelector } from '../state/messages/selectors';
 import { startChat } from '../state/chat/thunks';
 import { publishUserMessage } from '../state/messages/thunks';
+import { SelfUsername } from '../constants';
 
 function ChatScreen(initialUsername) {
     const messagesContainer = useRef();
@@ -26,7 +27,7 @@ function ChatScreen(initialUsername) {
     }, [messagesBlocks, isBotTyping]);
 
     const onTextSubmission = (text) => {
-        dispatch(publishUserMessage({ user: "Me", text: text }))
+        dispatch(publishUserMessage({ user: SelfUsername, text: text }))
     };
 
     return (

@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import botAvatar from '../../images/mayas_avatar.png';
 import userAvatar from '../../images/user_avatar.png';
+import { SelfUsername } from '../../constants';
 
 export const messagesSelector = (state) => state.messages;
 
@@ -14,7 +15,7 @@ export const messagesBlocksSelector = createSelector(messagesSelector, (messages
             result.push({
                 user: message.user,
                 messages: [message.text],
-                avatar: message.user === 'Me' ? userAvatar : botAvatar
+                avatar: message.user === SelfUsername ? userAvatar : botAvatar
             });
         } else {
             result[result.length - 1].messages.push(message.text);
