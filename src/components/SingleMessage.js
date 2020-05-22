@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FadeInAnimation } from './Animations';
+import { FadeInAnimation, BlinkReverese } from './Animations';
 
 function SingleMessage({ text, user, location }) {
     const renderSelfMessage = () => {
@@ -38,6 +38,7 @@ const BotContainer = styled.div`
 `;
 
 const MessageBase = styled.div`
+    cursor: default;
     width: fit-content;
     margin-bottom: 5px;
     padding-top: 10px;
@@ -45,6 +46,10 @@ const MessageBase = styled.div`
     padding-left: 15px;
     padding-right: 15px;
     font-size: 12px;
+
+    &:hover {
+        animation: ${BlinkReverese} .5s;
+    }
 `;
 
 const SelfMessage = styled(MessageBase)`
@@ -54,7 +59,7 @@ const SelfMessage = styled(MessageBase)`
     border-radius: 20px;
 `;
 
-const BotMessage = styled(MessageBase)`
+const BotMessage = styled(MessageBase)`    
     margin-left: 50px;
     color: black;
     background-color: #dedede;

@@ -33,9 +33,9 @@ const Avatar = styled.img`
     width: 30px;
 `;
 
-const Dots = styled.div`
+const Dots = styled.div`    
     position: absolute;
-    bottom: 7px;
+    bottom: 8px;
     left: 58px;
     width: 100px;
 
@@ -62,8 +62,7 @@ const DotsBackground = styled.div`
     position: absolute;
     height: 30px;
     width: 50px;
-    border-radius: ${(props) =>
-        props.withinBlock ? '5px 20px 20px 20px;' : '20px'};
+    border-radius: 20px;
     left: 50px;
 `;
 

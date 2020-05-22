@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import submitIcon from '../images/submit_icon.png';
-import { FadeInAnimation } from './Animations';
+import { FadeInAnimation, BlinkReverese } from './Animations';
 
 function SendingArea({ onSubmit, canUserType }) {
     const inputRef = useRef();
@@ -78,6 +78,11 @@ const MessageInput = styled.input`
 const SubmitIcon = styled.img`
     cursor: pointer;
     width: 22px;
+    margin-top: 2px;
+
+    &:hover {
+        animation: ${BlinkReverese} 0.75s;
+    }
 `;
 
 const SubmitButton = styled.div`

@@ -1,5 +1,6 @@
 import { setUsername } from '../chat/actions';
 import { handshake, calculation } from '../chat/thunks';
+import { LocalStorageUserKey } from '../../constants';
 
 export const publishUserMessage = (message) => {
     return function (dispatch, getState) {
@@ -9,7 +10,7 @@ export const publishUserMessage = (message) => {
             // if currently no username - we actually got a name message, the handshake flow should run
             dispatch(setUsername(message.text));
             // keep the username in localStorage
-            localStorage.setItem('chat-username', message.text);
+            localStorage.setItem(LocalStorageUserKey, message.text);
             // run the handshake flow (nice to meet...)
             dispatch(handshake(message));
         } else {

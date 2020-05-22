@@ -19,6 +19,20 @@ export const Blink = keyframes`
     }
 `;
 
+export const BlinkReverese = keyframes`
+    0% {
+      opacity: 1;
+    }
+
+    20% {
+      opacity: 0.2;
+    }
+
+    100% {
+      opacity: 1;
+    }
+`;
+
 export const Rotate = keyframes`
   from {
     transform: rotate(0deg);
@@ -35,4 +49,16 @@ export const RotateReverse = keyframes`
   to {
     transform: rotate(-360deg);
   }
-`; 
+`;
+
+export const Slide = keyframes`
+  0 % {
+    left: 0;
+  }
+  50 % {
+    left: 30px;
+  }
+  100 % {
+    left: 58px;
+  }
+`;
