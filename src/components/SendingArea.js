@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import styled from 'styled-components';
 import submitIcon from '../images/submit_icon.png';
-import { FadeInAnimation, BlinkReverese } from './Animations';
+import { FadeInAnimation, BlinkReverese, SlideInFromRight } from './Animations';
 import { EnterKeyCode } from '../constants';
 
 function SendingArea({ onSubmit, canUserType }) {
@@ -59,7 +59,7 @@ function SendingArea({ onSubmit, canUserType }) {
 }
 
 const Container = styled.div`
-    animation: ${FadeInAnimation} 0.5s;
+    animation: ${SlideInFromRight} 0.25s, ${FadeInAnimation} 2s;
     bottom: 0;
     position: absolute;
     width: 100%;

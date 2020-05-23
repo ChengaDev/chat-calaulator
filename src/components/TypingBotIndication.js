@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Blink, FadeInAnimation } from './Animations';
+import { Blink, FadeInAnimation, SlideInFromLeft } from './Animations';
 import botAvatar from '../images/mayas_avatar.png';
 
 function TypingBotIndication({ withinBlock }) {
@@ -20,7 +20,7 @@ function TypingBotIndication({ withinBlock }) {
 const Container = styled.div`
     bottom: 70px;
     position: absolute;
-    animation: ${FadeInAnimation} 1s;
+    animation: ${SlideInFromLeft} 0.25s, ${FadeInAnimation} 1s;
     left: 30px;
     width: 100%;
     display: flex;
@@ -58,7 +58,7 @@ const Dots = styled.div`
 `;
 
 const DotsBackground = styled.div`
-    background-color: #dedede;
+    background-color: #f2f2f2;
     position: absolute;
     height: 30px;
     width: 50px;

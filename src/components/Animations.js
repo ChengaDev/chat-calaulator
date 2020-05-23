@@ -62,3 +62,13 @@ export const Slide = keyframes`
     left: 58px;
   }
 `;
+
+export const SlideInFromRight = keyframes`
+  0% { transform: translateX(100%) }
+  100% { transform: translateX(0%) } 
+`;
+
+export const SlideInFromLeft = keyframes`
+  0% { transform: translateX(-100%) }
+  100% { transform: translateX(0%) } 
+`; 

@@ -56,14 +56,14 @@ const MessageBase = styled.div`
 const SelfMessage = styled(MessageBase)`
     margin-right: 50px;
     color: white;
-    background-color: #586e5d;
+    background-color: #3d4537;
     border-radius: 20px;
 `;
 
 const BotMessage = styled(MessageBase)`    
     margin-left: 50px;
     color: black;
-    background-color: #dedede;
+    background-color: #f2f2f2;
     border-radius: ${(props) =>
         props.location === 'top' ? '20px 20px 20px 5px' : '5px 20px 20px 20px'};
 `;
